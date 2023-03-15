@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.3'
 
 services:
   nginx:
@@ -14,13 +14,13 @@ services:
 
   web:
     build: 
-      context: ./django-api-portfolio
+      context: ./portfolio-web
     command: gunicorn mysite.wsgi:application --bind 10.31.1.74:8000
     ports:
       - 8000:8000
     working_dir: /usr/src/app/
     volumes:
-      - ./django-api-portfolio:/usr/src/app
+      - ./portfolio-web:/usr/src/app
       - static_volume:/usr/src/app/static
       - media_volume:/usr/src/app/media
     expose:
